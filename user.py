@@ -1,9 +1,10 @@
 import pygame
 
 class User():
-    def __init__(self,screen):
+    def __init__(self,screen,user_settings):
         '''初始化角色并设置其初始位置'''
         self.screen=screen
+        self.user_settings=user_settings
         #加载角色图像并获取其外接矩形
         self.image=pygame.image.load('alien_test/images/user.bmp')
         self.rect=self.image.get_rect()
@@ -11,6 +12,30 @@ class User():
         #将角色放在屏幕中央
         self.rect.centerx=self.screen_rect.centerx
         self.rect.centery=self.screen_rect.centery
+
+        self.centerx=float(self.rect.centerx)
+        self.centery=float(self.rect.centery)
+
+        self.moving_right=False
+        self.moving_left=False
+        self.moving_up=False
+        self.moving_down=False
+    
+    def update(self):
+        if self.moving_right:
+            self.centerx+=self.user_settings.user_speed_factor
+
+        if self.moving_left:
+            self.centerx-=self.user_settings.user_speed_factor
+
+        if self.moving_up:
+            self.centery-=self.user_settings.user_speed_factor
+
+        if self.moving_down:
+            self.centery+=self.user_settings.user_speed_factor
+
+        self.rect.centerx=self.centerx
+        self.rect.centery=self.centery
 
     def blitme(self):
         '''在指定位置绘制角色'''
