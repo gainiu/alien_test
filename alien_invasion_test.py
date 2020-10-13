@@ -1,5 +1,6 @@
 import sys
 import pygame
+from pygame.sprite import Group
 from settings import Settings
 from user import User
 import user_function as uf
@@ -13,10 +14,13 @@ def run_game():
     #创建一个角色
     user=User(screen,user_settings)
 
+    bullets=Group()
+
     while True:
         '''开始游戏主循环'''
-        uf.check_event(user)
+        uf.check_event(user,user_settings,screen,bullets)
         user.update()
-        uf.upgrade_screen(screen,user,user_settings)
+        uf.update_bullet(bullets)
+        uf.upgrade_screen(screen,user,user_settings,bullets)
 
 run_game()
