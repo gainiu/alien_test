@@ -3,6 +3,7 @@ import pygame
 from pygame.sprite import Group
 from settings import Settings
 from user import User
+from star import Star
 import user_function as uf
 
 def run_game():
@@ -16,11 +17,14 @@ def run_game():
 
     bullets=Group()
 
+    stars=Group()
+    uf.create_fleet(user_settings,screen,stars)
+
     while True:
         '''开始游戏主循环'''
         uf.check_event(user,user_settings,screen,bullets)
         user.update()
         uf.update_bullet(bullets)
-        uf.upgrade_screen(screen,user,user_settings,bullets)
+        uf.upgrade_screen(screen,user,user_settings,bullets,stars)
 
 run_game()
