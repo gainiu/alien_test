@@ -18,7 +18,7 @@ def run_game():
     bullets=Group()
 
     stars=Group()
-    uf.create_fleet(user_settings,screen,stars)
+    uf.create_fleet(user_settings,screen,stars,user)
 
     while True:
         '''开始游戏主循环'''

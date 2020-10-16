@@ -2,6 +2,7 @@ import sys
 import pygame
 from bullet import Bullet
 from star import Star
+from random import randint
 
 def check_keydown_event(event,user,user_settings,screen,bullets):
     # if event.key==pygame.K_RIGHT:
@@ -61,14 +62,29 @@ def update_bullet(bullets):
         if bullet.rect.right <=0:
             bullets.remove(bullet)
 
-def create_fleet(user_settings,screen,stars):
+def create_fleet(user_settings,screen,stars,user):
     star=Star(user_settings,screen)
-    star_height=star.rect.height
+    number_star_y=get_number_stars_y(user_settings,star.rect.height)
+    number_rows=get_number_rows(user_settings,star.rect.width,user.rect.width)
+
+    for row_number in range(number_rows):
+        for star_number in range(number_star_y):
+            create_star(user_settings,screen,stars,randint(-1,star_number),randint(-1,row_number))
+
+def get_number_stars_y(user_settings,star_height):
     available_space_y=user_settings.screen_height-star_height
     number_star_y=int(available_space_y/(2*star_height))
+    return number_star_y
 
-    for star_number in range(number_star_y):
-        star=Star(user_settings,screen)
-        star.y=(star_height/2)+(2*star_height*star_number)
-        star.rect.y=star.y
-        stars.add(star)
+def create_star(user_settings,screen,stars,star_number,row_number):
+    star=Star(user_settings,screen)
+    star_height=star.rect.height
+    star.y=(star_height/2)+(2*star_height*star_number)
+    star.rect.y=star.y
+    star.rect.x=star.rect.width+2*star.rect.width*row_number
+    stars.add(star)
+
+def get_number_rows(user_settings,star_width,user_width):
+    available_space_x=user_settings.screen_width-(3*star_width)-user_width
+    number_rows=int(available_space_x/(2*star_width))
+    return number_rows
