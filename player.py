@@ -1,12 +1,14 @@
 import pygame
+from pygame.sprite import Sprite
 
-class Player():
+class Player(Sprite):
 
     def __init__(self,catch_setting,screen):
+        super().__init__()
         self.catch_setting=catch_setting
         self.screen=screen
 
-        self.image=pygame.image.load('images/user.bmp')
+        self.image=pygame.image.load('alien_test/images/user.bmp')
         self.rect=self.image.get_rect()
         self.screen_rect=self.screen.get_rect()
 

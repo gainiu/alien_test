@@ -7,4 +7,6 @@ class CatchBall():
 
         self.user_speed_factor=1
 
-        self.ball_speed_factor=1
+        self.ball_speed_factor=0.5
+
+        self.player_limit=3

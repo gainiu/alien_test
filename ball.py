@@ -1,13 +1,15 @@
 import pygame
 from random import randint
+from pygame.sprite import Sprite
 
-class Ball():
+class Ball(Sprite):
 
     def __init__(self,catch_setting,screen):
+        super().__init__()
         self.catch_setting=catch_setting
         self.screen=screen
 
-        self.image=pygame.image.load('images/ball.bmp')
+        self.image=pygame.image.load('alien_test/images/ball.bmp')
         self.rect=self.image.get_rect()
         self.screen_rect=self.screen.get_rect()
 
