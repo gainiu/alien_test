@@ -9,7 +9,7 @@ class Rain(Sprite):
         self.rain_setting = rain_setting
         self.screen = screen
 
-        self.image = pygame.image.load('alien_test/images/rain.bmp')
+        self.image = pygame.image.load('images/rain.bmp')
         self.rect = self.image.get_rect()
         # self.screen_rect=self.screen.get_rect()
 

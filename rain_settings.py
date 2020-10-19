@@ -4,4 +4,4 @@ class RainSettings():
         self.screen_height=560
         self.screen_bg_color=(255,255,255)
 
-        self.fleet_drop_speed=5
+        self.fleet_drop_speed=2
