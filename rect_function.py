@@ -4,24 +4,24 @@ from rect_bullet import RectBullet
 from rect import RectBox
 
 
-def check_event(rect_settings, screen, rectplayer, rectbullets):
+def check_event(rect_settings, screen, rectplayer, rectbullets, stats):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
         elif event.type == pygame.KEYDOWN:
             check_keydown_event(rect_settings, screen,
-                                event, rectplayer, rectbullets)
+                                event, rectplayer, rectbullets, stats)
         elif event.type == pygame.KEYUP:
             check_keyup_event(event, rectplayer)
 
 
-def check_keydown_event(rect_settings, screen, event, rectplayer, rectbullets):
+def check_keydown_event(rect_settings, screen, event, rectplayer, rectbullets, stats):
     if event.key == pygame.K_UP:
         rectplayer.moving_up = True
     elif event.key == pygame.K_DOWN:
         rectplayer.moving_down = True
     elif event.key == pygame.K_SPACE:
-        if len(rectbullets)==0:
+        if len(rectbullets)==0 and stats.rect_active:
             create_rectbullets(rect_settings, screen, rectplayer, rectbullets)
 
 

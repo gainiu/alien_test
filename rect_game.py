@@ -26,7 +26,7 @@ def run_time():
 
     while True:
 
-        rf.check_event(rect_settings,screen, rectplayer, rectbullets)
+        rf.check_event(rect_settings,screen, rectplayer, rectbullets, stats)
         if stats.rect_active:
             rectplayer.update()
             rf.update_rectbox(rect_settings, screen, rectboxes,rectbullets)
