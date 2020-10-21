@@ -15,6 +15,7 @@ class RectSettings():
         self.rect_speed_factor = 1
 
         self.rectplayer_speed = 1
+        self.rectplayer_limit=3
 
         self.bullet_width=15
         self.bullet_height=3

@@ -25,6 +25,8 @@ class RectBox(Sprite):
         if self.moving_up:
             self.y-=self.rect_settings.rect_speed_factor
 
+        self.rect.y=self.y
+
     def draw_rect(self):
         pygame.draw.rect(
             self.screen, self.rect_settings.rect_color, self.rect, 0)
