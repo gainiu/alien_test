@@ -11,3 +11,4 @@ class RectSettings():
         self.rect_width=50
         self.rect_height=50
         self.rect_color=(0,0,0)
+        self.rect_speed_factor=1

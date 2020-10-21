@@ -15,7 +15,8 @@ def run_time():
 
     while True:
 
-        rf.check_event()       
+        rf.check_event()
+        rf.update_rectbox(rect_settings,screen,rectbox)
         rf.update_screen(rect_settings,screen,rectbox)
         
 

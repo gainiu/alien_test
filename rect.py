@@ -10,5 +10,9 @@ class RectBox():
         self.rect=pygame.Rect(0,0,self.rect_settings.rect_width,self.rect_settings.rect_height)
         self.rect.right=self.screen_rect.right
 
+
+    def update(self):
+        self.rect.y+=self.rect_settings.rect_speed_factor
+
     def draw_rect(self):
         pygame.draw.rect(self.screen,self.rect_settings.rect_color,self.rect,0)
