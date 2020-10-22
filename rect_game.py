@@ -6,6 +6,7 @@ from rect import RectBox
 from rect_player import RectPlayer
 from rect_bullet import RectBullet
 from rect_stats import RectStats
+from rect_button import Button
 import rect_function as rf
 
 
@@ -23,15 +24,16 @@ def run_time():
     rectboxes=Group()
 
     stats=RectStats(rect_settings)
+    button=Button(rect_settings, screen)
 
     while True:
 
-        rf.check_event(rect_settings,screen, rectplayer, rectbullets, stats)
+        rf.check_event(rect_settings,screen, rectplayer, rectbullets, stats, button,rectboxes,rectbullets)
         if stats.rect_active:
             rectplayer.update()
             rf.update_rectbox(rect_settings, screen, rectboxes,rectbullets)
             rf.update_bullet(rectbullets,screen,stats)
-        rf.update_screen(rect_settings, screen, rectboxes, rectplayer, rectbullets)
+        rf.update_screen(rect_settings, screen, rectboxes, rectplayer, rectbullets,stats,button)
 
 
 run_time()

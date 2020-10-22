@@ -12,17 +12,20 @@ class RectPlayer():
         self.screen_rect = self.screen.get_rect()
 
         self.rect.centery = self.screen_rect.centery
-        self.y = float(self.rect.y)
+        self.centery = float(self.rect.centery)
 
         self.moving_down = False
         self.moving_up = False
 
     def update(self):
         if self.moving_down and self.rect.bottom <= self.screen_rect.bottom:
-            self.y += self.rect_settings.rectplayer_speed
+            self.centery += self.rect_settings.rectplayer_speed
         if self.moving_up and self.rect.y >= 0:
-            self.y -= self.rect_settings.rectplayer_speed
-        self.rect.y = self.y
+            self.centery -= self.rect_settings.rectplayer_speed
+        self.rect.centery = self.centery
 
     def blitme(self):
         self.screen.blit(self.image, self.rect)
+
+    def player_center(self):
+        self.centery = self.screen_rect.centery
